@@ -26,7 +26,8 @@ class productoController extends Controller
      */
     public function create()
     {
-        //
+        $categoria = \App\categoria::all();
+        return view ('productos.create',compact('categoria'));
     }
 
     /**

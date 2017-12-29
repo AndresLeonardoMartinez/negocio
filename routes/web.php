@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/productos', 'productoController@index');
+Route::get('/productos/create', 'productoController@create');
+Route::post('/productos', 'productoController@store');
 
 Route::get('/categorias', 'categoriaController@index');
 Route::get('/categorias/{id}', 'categoriaController@show');
