@@ -1,5 +1,9 @@
 @extends('layout.master')
 
+@section ('js')        
+  <script
+  src="js/productos.js"></script>
+@endsection
         
 @section ('contenido')     
 <div class="album text-muted">

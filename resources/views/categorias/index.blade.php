@@ -2,7 +2,10 @@
 
 @extends('layout.master')
 
-        
+@section ('js')        
+  <script
+  src="js/categorias.js"></script>
+@endsection
 @section ('contenido')     
 <div class="album text-muted">
         <div class="container">
