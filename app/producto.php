@@ -11,6 +11,6 @@ class producto extends Model
     protected $fillable=['name','precio','descripcion','categoria_id'];
     
    	public function categoria(){
-    	return $this->belongsTo('App\Phone');
+        return $this->belongsTo('App\categoria','categoria_id');
 	}
 }

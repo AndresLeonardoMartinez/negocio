@@ -38,7 +38,8 @@ class productoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        producto::create(['name'=>$request->name, 'descripcion' => $request->descripcion, 'categoria_id' => $request->categoria_id, 'precio'=> $request->precio]);
+        return redirect('/productos');
     }
 
     /**

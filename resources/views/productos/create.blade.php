@@ -25,7 +25,7 @@
         @endforeach
         <br>
       <label for="precio">Precio</label>
-      <input type="number" step=0.01 min=0 >
+      <input type="number" step=0.01 min=0 name='precio' >
 
       <button type="submit" class="btn btn-primary">Guardar</button>
     </form>

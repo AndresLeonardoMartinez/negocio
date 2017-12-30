@@ -1,19 +1,28 @@
 
-<!doctype html>
-<html lang="en">
-  <head>
-    
-  </head>
 
-  <body>
+@extends('layout.master')
 
-      <div>   
-        @foreach($categorias as $categoria)
+        
+@section ('contenido')     
+<div class="album text-muted">
+        <div class="container">
+          <div class="row">
+          @foreach($categorias as $categoria)
+            <div class="card">
+
+              <h4 class="card-title">{{$categoria->name}}</h4>
+              <h6 class="card-subtitle mb-2 text-muted"><a href={{'http://localhost/categorias/'.$categoria->id}}>{{$categoria->name}}</a></h6>
+              <p class="card-text">{{$categoria->descripcion}}</p>
+        
+
             
-            <a href={{'http://localhost/categorias/'.$categoria->id}}><h2>{{$categoria->name}}</h2></a>
-            <h3>{{$categoria->precio}}</h3>
-            <p>{{$categoria->descripcion}}</p>
-        @endforeach
-     </div>
-  </body>
-</html>
+            </div>
+            
+        @endforeach        
+          </div>
+
+      </div>  
+</div>
+
+
+@endsection
