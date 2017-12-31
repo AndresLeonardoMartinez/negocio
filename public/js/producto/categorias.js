@@ -14,7 +14,7 @@ $.ajax({
 function parsearCategorias(data){
 var columna= document.getElementById('r');
 	var name, descripcion, precio, categoria_id,producto;
-	var div,h4,p,img;
+	var div,h3,h4,img;
 	for (i = 0; i < data.length; i++) { 
     	categoria = data[i];
     	name = categoria.name;
@@ -24,8 +24,8 @@ var columna= document.getElementById('r');
     	div.className += "card";
     	h4=document.createElement("H4");
     	h4.className += 'card-title';
-    	p=document.createElement("P");
-    	p.className += 'card-text';
+    	h3=document.createElement("p");
+    	h3.className += 'card-text';
 	    a=document.createElement("A");
 	    a.href='http://localhost/categorias/'+id;
 	    a.innerHTML = name;
@@ -33,14 +33,14 @@ var columna= document.getElementById('r');
 	    pp.innerHTML="Categoria:";
 	    pp.appendChild(a);
 		h4.innerHTML=name;
-    	p.innerHTML=descripcion;
+    	h3.innerHTML=descripcion;
     	img =document.createElement("IMG");
-    	img.className+="card-img-top";
+    	img.className+="categoriaImagen";
     	img.src=categoria.imagen;
     	img.alt=categoria.name;
     	div.appendChild(img);
     	div.appendChild(h4);
-    	div.appendChild(p);
+    	div.appendChild(h3);
     	div.appendChild(pp);
     	columna.appendChild(div);
 	}

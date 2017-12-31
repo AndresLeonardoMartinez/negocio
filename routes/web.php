@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view ('productos.index');
+    return view ('categorias.index');
 });
 
 Route::get('/productos', 'productoController@index');
