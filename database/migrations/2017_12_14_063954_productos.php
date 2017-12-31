@@ -23,7 +23,7 @@ class Productos extends Migration
             $table->integer('categoria_id')->unsigned()->index();
 
             $table->foreign('categoria_id')->references('id')->on('categorias');
-
+            $table->string('imagen',100)->default("");
 
         });
     }

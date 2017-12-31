@@ -1,14 +1,11 @@
+@extends('layout.master')
 
-<!doctype html>
-<html lang="en">
-  <head>
-    
-  </head>
+@section ('contenido')
+    <div class="container"> 
 
-  <body>
     <h1>Creación de un producto </h1>
     <hr>
-    <form method="POST" action="/productos">
+    <form method="POST" action="/productos"  enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="form-group">
         <label for="name" >Nombre</label>
@@ -26,8 +23,8 @@
         <br>
       <label for="precio">Precio</label>
       <input type="number" step=0.01 min=0 name='precio' >
-
+      <input type="file" class="form-control-file" id="imagen" name="imagen">
       <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
-  </body>
-</html>
+</div>
+@endsection

@@ -59,7 +59,6 @@ function parsearProductos(data){
     	div.appendChild(pp);
     	columna.appendChild(div);
 	}
-
 }
 
 function parsearCategorias(data){

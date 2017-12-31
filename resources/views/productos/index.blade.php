@@ -2,28 +2,39 @@
 
 @section ('js')        
   <script
-  src="js/productos.js"></script>
+  src="js/producto/productos.js"></script>
 @endsection
         
 @section ('contenido')     
+<div class="container"> 
+  <ul class="nav">
+    <li class="nav-item">
+      <button type="button" class="btn btn-primary" id="OrdenarMenor">Ordenar por precio m</button>
+    </li>
+    <li class="nav-item">
+      <button type="button" class="btn btn-primary" id="OrdenarMayor">Ordenar por precio M</button>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+  </ul>
+</div>
+
 <div class="album text-muted">
         <div class="container">
-          <div class="row">
-          @foreach($productos as $producto)
+          <div class="row" id="r">
             
 
-            <div class="card">
-            <h4 class="card-title">{{$producto->name}}</h4>
-            <p class="card-text">{{$producto->descripcion}}</p>
-            <h6 class="card-subtitle mb-2 text-muted">${{$producto->precio}}</h6>
             
-            <p>Categoria:<a href={{'http://localhost/categorias/'.$producto->categoria_id}}> {{$producto->categoria->name}}</a></p>
-<!--               <img data-src="holder.js/100px280?theme=thumb" alt="Card image cap">
- -->              
-            </div>
+         
             
-        @endforeach        
-          </div>
+        </div>
 
       </div>  
 </div>

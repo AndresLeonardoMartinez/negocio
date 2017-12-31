@@ -29,6 +29,7 @@ class productoController extends Controller
     public function create()
     {
         $categoria = \App\categoria::all();
+
         return view ('productos.create',compact('categoria'));
     }
 
@@ -40,8 +41,17 @@ class productoController extends Controller
      */
     public function store(Request $request)
     {
-        producto::create(['name'=>$request->name, 'descripcion' => $request->descripcion, 'categoria_id' => $request->categoria_id, 'precio'=> $request->precio]);
-        return redirect('/productos');
+        
+        $nombre=$request->name;
+        $imagenNombre='images/'.$nombre.'.'.$request->imagen->getClientOriginalExtension();
+        $imagen= request()->file('imagen');
+        
+        $nombreImagen = $nombre.'.'.$request->imagen->getClientOriginalExtension();
+        $destinationPath = public_path('images');
+        $imagen->move($destinationPath, $nombreImagen);
+        producto::create(['name'=>$request->name, 'descripcion' => $request->descripcion, 'categoria_id' => $request->categoria_id, 'precio'=> $request->precio,'imagen'=>$imagenNombre]);
+
+        return redirect('/');
     }
 
     /**

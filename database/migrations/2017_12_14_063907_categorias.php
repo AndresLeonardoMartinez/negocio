@@ -19,6 +19,8 @@ class Categorias extends Migration
             $table->text('descripcion');
             $table->timestamp('created_at')->nullable();
             $table->softDeletes();
+            $table->string('imagen',100)->default("");
+
 
         });
     }

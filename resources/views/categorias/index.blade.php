@@ -1,30 +1,25 @@
-
-
 @extends('layout.master')
 
 @section ('js')        
   <script
-  src="js/categorias.js"></script>
+  src="js/producto/categorias.js"></script>
 @endsection
+        
 @section ('contenido')     
+<div class="container">
+<center><h2>Categorias</h2></center>
 <div class="album text-muted">
         <div class="container">
-          <div class="row">
-          @foreach($categorias as $categoria)
-            <div class="card">
-
-              <h4 class="card-title">{{$categoria->name}}</h4>
-              <h6 class="card-subtitle mb-2 text-muted"><a href={{'http://localhost/categorias/'.$categoria->id}}>{{$categoria->name}}</a></h6>
-              <p class="card-text">{{$categoria->descripcion}}</p>
-        
+          <div class="row" id="r">
+            
 
             
-            </div>
+         
             
-        @endforeach        
-          </div>
+        </div>
 
       </div>  
+</div>
 </div>
 
 
