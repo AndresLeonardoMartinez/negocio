@@ -27,8 +27,8 @@ $.ajax({
 
 function parsearProductos(data){
 	var columna= document.getElementById('r');
-	var name, descripcion, precio, categoria_id,producto;
-	var div,h4,p,h6;
+	var name, descripcion, precio, categoria_id,producto, imagen;
+	var div,h4,p,h6,img;
 	for (i = 0; i < data.length; i++) { 
     	producto = data[i];
     	name = producto.name;
@@ -53,6 +53,14 @@ function parsearProductos(data){
 		h4.innerHTML=name;
     	p.innerHTML=descripcion;
     	h6.innerHTML="$"+precio;
+    	img =document.createElement("IMG");
+    	img.height="200";
+    	img.width="200";
+    	//img.className+="card-img-top";
+    	img.className+="img-thumbnail";
+    	img.src=producto.imagen;
+    	img.alt=producto.name;
+    	div.appendChild(img);
     	div.appendChild(h4);
     	div.appendChild(p);
     	div.appendChild(h6);
