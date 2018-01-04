@@ -7,6 +7,9 @@ use App\categoria;
 
 class categoriaController extends Controller
 {
+     public function __construct() {
+        $this->middleware('auth')->except('index', 'show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +30,8 @@ class categoriaController extends Controller
      */
     public function create()
     {
-        //
+        Request()->user()->authorizeRoles('admin'); 
+        return view ('categorias.create');
     }
 
     /**
@@ -38,7 +42,17 @@ class categoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Request()->user()->authorizeRoles('admin'); 
+        $nombre=$request->name;
+        $imagenNombre='/images/'.$nombre.'.'.$request->imagen->getClientOriginalExtension();
+        $imagen= request()->file('imagen');
+        
+        $nombreImagen = $nombre.'.'.$request->imagen->getClientOriginalExtension();
+        $destinationPath = public_path('images');
+        $imagen->move($destinationPath, $nombreImagen);
+        categoria::create(['name'=>$request->name, 'descripcion' => $request->descripcion, 'imagen'=>$imagenNombre]);
+
+        return redirect('/');
     }
 
     /**
@@ -50,7 +64,12 @@ class categoriaController extends Controller
     public function show($id)
     {
         $categoria = categoria::find($id);
-        // return $categoria;
+        return $categoria;
+        //return view ('categorias.show',compact('categoria'));
+    }
+    public function get($id)
+    {
+        $categoria = categoria::find($id);
         return view ('categorias.show',compact('categoria'));
     }
 
@@ -62,7 +81,7 @@ class categoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        Request()->user()->authorizeRoles('admin'); 
     }
 
     /**
@@ -74,7 +93,7 @@ class categoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Request()->user()->authorizeRoles('admin'); 
     }
 
     /**
@@ -85,6 +104,6 @@ class categoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Request()->user()->authorizeRoles('admin'); 
     }
 }

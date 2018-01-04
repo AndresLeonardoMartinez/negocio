@@ -37,7 +37,7 @@ function parsearProductos(data){
     	categoria_id= producto.categoria_id;
     	productos[i]=data[i];
     	div =document.createElement("DIV");
-    	div.className += "card";
+    	div.className += "tarjeta";
     	h4=document.createElement("H4");
     	h4.className += 'card-title';
     	p=document.createElement("P");
@@ -45,7 +45,7 @@ function parsearProductos(data){
     	h6=document.createElement("H6");
     	h6.className += 'card-subtitle mb-2 text-muted';
 	    a=document.createElement("A");
-	    a.href='http://localhost/categorias/'+categoria_id;
+	    a.href='/categorias/'+categoria_id+'/get';
 	    a.innerHTML = categorias [categoria_id].nombre;
 	    pp=document.createElement("P");
 	    pp.innerHTML="Categoria:";
@@ -54,10 +54,8 @@ function parsearProductos(data){
     	p.innerHTML=descripcion;
     	h6.innerHTML="$"+precio;
     	img =document.createElement("IMG");
-    	img.height="200";
-    	img.width="200";
-    	//img.className+="card-img-top";
-    	img.className+="img-thumbnail";
+    	
+    	img.className+="producto";
     	img.src=producto.imagen;
     	img.alt=producto.name;
     	div.appendChild(img);

@@ -2,7 +2,8 @@
 
 @section ('js')        
   <script
-  src="js/producto/categorias.js"></script>
+  src={{ URL::to('js/producto/categorias.js') }}></script>
+  
 @endsection
         
 @section ('contenido')     

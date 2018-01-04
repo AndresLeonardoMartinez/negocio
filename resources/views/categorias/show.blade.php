@@ -1,20 +1,33 @@
+@extends('layout.master')
 
-<!doctype html>
-<html lang="en">
-  <head>
-    
-  </head>
+@section ('js')        
+  <script
+  src={{ URL::to("js/producto/productosPorCategoria.js") }}></script>
+  
+@endsection
+        
+@section ('contenido')     
+<div class="container">
+	<center>
+		<h1>{{$categoria->name}}</h1>
+		<i><h5>{{$categoria->descripcion}}</h5></i>
+		<h1 class="hidden" id="categoria_id">{{$categoria->id}}</h1>
+	</center>
+</div>
+@include('layout.barraProductos')
 
-  <body>
-      <h1>{{$categoria->name}}</h1>
-      <h5>{{$categoria->descripcion}}</h5>
-      <hr>
-       <div>   
-        @foreach($categoria->productos as $producto)
-            <h2>{{$producto->name}}</h2>
-            <h3>{{$producto->precio}}</h3>
-            <p>{{$producto->descripcion}}</p>
-        @endforeach
-     </div>
-  </body>
-</html>
+<div class="album text-muted">
+        <div class="container">
+          <div class="row" id="r">
+            
+
+            
+         
+            
+        </div>
+
+      </div>  
+</div>
+
+
+@endsection

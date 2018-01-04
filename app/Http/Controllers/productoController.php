@@ -8,6 +8,10 @@ use App\producto;
 use View;
 class productoController extends Controller
 {
+    
+     public function __construct() {
+        $this->middleware('auth')->except('index', 'show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -28,6 +32,7 @@ class productoController extends Controller
      */
     public function create()
     {
+        Request()->user()->authorizeRoles('admin'); 
         $categoria = \App\categoria::all();
 
         return view ('productos.create',compact('categoria'));
@@ -41,9 +46,9 @@ class productoController extends Controller
      */
     public function store(Request $request)
     {
-        
+        Request()->user()->authorizeRoles('admin'); 
         $nombre=$request->name;
-        $imagenNombre='images/'.$nombre.'.'.$request->imagen->getClientOriginalExtension();
+        $imagenNombre='/images/'.$nombre.'.'.$request->imagen->getClientOriginalExtension();
         $imagen= request()->file('imagen');
         
         $nombreImagen = $nombre.'.'.$request->imagen->getClientOriginalExtension();
@@ -65,6 +70,11 @@ class productoController extends Controller
         //
     }
 
+    public function getByCategoria($cat)
+    {
+        return producto::where('categoria_id', $cat)->get();
+
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -73,7 +83,7 @@ class productoController extends Controller
      */
     public function edit($id)
     {
-        //
+        Request()->user()->authorizeRoles('admin'); 
     }
 
     /**
@@ -85,7 +95,7 @@ class productoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Request()->user()->authorizeRoles('admin'); 
     }
 
     /**
@@ -96,6 +106,6 @@ class productoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Request()->user()->authorizeRoles('admin'); 
     }
 }

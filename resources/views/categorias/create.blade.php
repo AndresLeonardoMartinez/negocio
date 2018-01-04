@@ -1,33 +1,23 @@
+@extends('layout.master')
 
-<!doctype html>
-<html lang="en">
-  <head>
-    
-  </head>
+@section ('contenido')
+    <div class="container"> 
 
-  <body>
-    <h1>Creación de un producto </h1>
+    <h1>Creación de una categoria </h1>
     <hr>
-     <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-  </form>
-  </body>
-</html>
+    <form method="POST" action="/categorias"  enctype="multipart/form-data">
+      {{ csrf_field() }}
+      <div class="form-group">
+        <label for="name" >Nombre</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Nombre">
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea type="text" class="form-control" id="descripcion" name="descripcion"></textarea>
+      </div>
+      <input type="file" class="form-control-file" id="imagen" name="imagen">
+      <br>
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+@endsection

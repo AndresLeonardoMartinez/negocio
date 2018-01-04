@@ -67,3 +67,19 @@ footer p {
   border-radius: 100%;
     border: 1px solid ;
 }
+.producto{
+  width: 20vw;
+  height: 20vw;
+  border-radius: 10%;
+  
+}
+.tarjeta{
+  border-radius: 10%;
+  border: 1px solid ; 
+  margin: 5px;
+  padding: 10px;
+}
+
+.hidden {
+  display: none;
+}

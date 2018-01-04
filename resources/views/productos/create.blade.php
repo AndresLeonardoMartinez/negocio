@@ -24,7 +24,9 @@
       <label for="precio">Precio</label>
       <input type="number" step=0.01 min=0 name='precio' >
       <input type="file" class="form-control-file" id="imagen" name="imagen">
+      <br>
       <button type="submit" class="btn btn-primary">Guardar</button>
+
     </form>
 </div>
 @endsection

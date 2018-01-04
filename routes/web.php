@@ -12,12 +12,28 @@
 */
 
 Route::get('/', function () {
-    return view ('categorias.index');
+    return view ('productos.index');
 });
 
 Route::get('/productos', 'productoController@index');
 Route::get('/productos/create', 'productoController@create');
+Route::get('/productos/{cat}', 'productoController@getByCategoria');
 Route::post('/productos', 'productoController@store');
 
 Route::get('/categorias', 'categoriaController@index');
+Route::get('/categorias/create', 'categoriaController@create');
+Route::post('/categorias', 'categoriaController@store');
+
+Route::get('/categorias/show', function () {
+    return view ('categorias.index');
+});
+
 Route::get('/categorias/{id}', 'categoriaController@show');
+Route::get('/categorias/{id}/get', 'categoriaController@get');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
