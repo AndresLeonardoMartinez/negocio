@@ -1,19 +1,11 @@
 <div class="container"> 
-  <ul class="nav">
-    <li class="nav-item">
-      <button type="button" class="btn btn-primary" id="OrdenarMenor">Ordenar por precio m</button>
-    </li>
-    <li class="nav-item">
-      <button type="button" class="btn btn-primary" id="OrdenarMayor">Ordenar por precio M</button>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </li>
-  </ul>
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+   
+    
+      <button type="button" class="btn btn-primary" id="OrdenarMenor">Precio Menor </button>
+      <button type="button" class="btn btn-primary" id="OrdenarMayor">Precio Mayor</button>
+    <button class="btn btn-danger navbar-btn">Button</button>
+  </div>
+</nav>
 </div>

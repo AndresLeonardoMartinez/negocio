@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/productos/show', function () {
     return view ('productos.index');
 });
-
 Route::get('/productos', 'productoController@index');
 Route::get('/productos/create', 'productoController@create');
 Route::get('/productos/{cat}', 'productoController@getByCategoria');
@@ -32,8 +32,8 @@ Route::get('/categorias/{id}', 'categoriaController@show');
 Route::get('/categorias/{id}/get', 'categoriaController@get');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home',function () {
+    return view ('productos.index');
+});
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

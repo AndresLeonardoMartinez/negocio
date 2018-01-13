@@ -1,28 +1,16 @@
-<header>
-      <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-8 py-4">
-              <h4 class="text-white">Acerca de nosotros</h4>
-              <p class="text-muted">Somos un microemprendimiento dedicado a la venta y producción de todo tipo de plantas. Nos especilizamos en plantines y cáctus. También ofrecemos macetas y artículos de jardinería.</p>
-            </div>
-            <div class="col-sm-4 py-4">
-              <h4 class="text-white">Contactanos</h4>
-              <ul class="list-unstyled">
-                <!-- <li><a href="#" class="text-white">Follow on Twitter</a></li> -->
-                <p><li><a href="https://www.facebook.com/eljardindehilda/" class="text-white">Visitanos en Facebook!</a></li>
-<!--                 <li><a href="#" class="text-white">Email me</a></li>
- -->              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="navbar navbar-dark bg-dark">
-        <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand">El Jardín de Hilda</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      </div>
-    </header>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">El Jardín de Hilda</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/home">Home</a></li>
+      <li><a href="/productos/show">Productos</a></li>
+      <li><a href="/categorias/show">Categorias</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
+      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
+    </ul>
+  </div>
+</nav>

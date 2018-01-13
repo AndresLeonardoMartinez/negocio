@@ -1,8 +1,6 @@
-<main role="main">
+<main>
 
      @include ('layout.presentacion') 
       
      @yield ('contenido')
-      
-
-    </main>
+</main>      

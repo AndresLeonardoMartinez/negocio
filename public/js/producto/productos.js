@@ -28,7 +28,7 @@ $.ajax({
 function parsearProductos(data){
 	var columna= document.getElementById('r');
 	var name, descripcion, precio, categoria_id,producto, imagen;
-	var div,h4,p,h6,img;
+	var div,h4,p,h6,img,divGrande;
 	for (i = 0; i < data.length; i++) { 
     	producto = data[i];
     	name = producto.name;
@@ -37,7 +37,9 @@ function parsearProductos(data){
     	categoria_id= producto.categoria_id;
     	productos[i]=data[i];
     	div =document.createElement("DIV");
-    	div.className += "tarjeta";
+    	divGrande = document.createElement("DIV");
+    	divGrande.className+="col-md-4";
+    	// div.className += "tarjeta";
     	h4=document.createElement("H4");
     	h4.className += 'card-title';
     	p=document.createElement("P");
@@ -58,11 +60,13 @@ function parsearProductos(data){
     	img.className+="producto";
     	img.src=producto.imagen;
     	img.alt=producto.name;
-    	div.appendChild(img);
-    	div.appendChild(h4);
-    	div.appendChild(p);
-    	div.appendChild(h6);
-    	div.appendChild(pp);
+    	divGrande.appendChild(img);
+    	divGrande.appendChild(h4);
+    	divGrande.appendChild(p);
+    	divGrande.appendChild(h6);
+    	divGrande.appendChild(pp);
+    	
+    	div.appendChild(divGrande);
     	columna.appendChild(div);
 	}
 }
