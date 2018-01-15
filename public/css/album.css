@@ -73,6 +73,17 @@ footer p {
   /*border-radius: 10%;*/
   
 }
+.productoAdmin{
+  width: 15vw;
+  height: 15vw;
+}
+.imagenACambiar{
+  width: 7vw;
+  height: 7vw;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  float: left; 
+}
 .tarjeta{
   border-radius: 10%;
   border: 1px solid ; 
@@ -83,3 +94,23 @@ footer p {
 .hidden {
   display: none;
 }
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+

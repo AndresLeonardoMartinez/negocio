@@ -11,19 +11,22 @@
 |
 */
 
+Route::get('/', 'productoController@home');
 
-Route::get('/productos/show', function () {
-    return view ('productos.index');
-});
+Route::get('/productos/show', 'productoController@home');
 Route::get('/productos', 'productoController@index');
 Route::get('/productos/create', 'productoController@create');
+Route::get('/productos/{id}', 'productoController@show');
+Route::get('/productos/{id}/edit', 'productoController@edit');
 Route::get('/productos/{cat}', 'productoController@getByCategoria');
 Route::post('/productos', 'productoController@store');
+Route::delete('/productos/{id}', 'productoController@destroy'); 
+Route::patch('/productos/{id}', 'productoController@update'); 
+
 
 Route::get('/categorias', 'categoriaController@index');
 Route::get('/categorias/create', 'categoriaController@create');
 Route::post('/categorias', 'categoriaController@store');
-
 Route::get('/categorias/show', function () {
     return view ('categorias.index');
 });

@@ -38,7 +38,7 @@ function parsearProductos(data){
     	productos[i]=data[i];
     	div =document.createElement("DIV");
     	divGrande = document.createElement("DIV");
-    	divGrande.className+="col-md-4";
+    	divGrande.className+="card";
     	// div.className += "tarjeta";
     	h4=document.createElement("H4");
     	h4.className += 'card-title';

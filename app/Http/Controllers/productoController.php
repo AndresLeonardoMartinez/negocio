@@ -10,7 +10,7 @@ class productoController extends Controller
 {
     
      public function __construct() {
-        $this->middleware('auth')->except('index', 'show');
+        $this->middleware('auth')->except('index');
     }
     /**
      * Display a listing of the resource.
@@ -19,12 +19,27 @@ class productoController extends Controller
      */
     public function index()
     {
+        
         $productos = producto::all();
         
            // return view ('productos.index',compact('productos'));
         return $productos;
     }
-
+    public function home()
+    {
+        
+        $productos = producto::all();
+        if (Request()->user()->authorizeRoles('admin'))
+        {
+            return view ('productos.indexAdmin',compact('productos'));
+        } 
+        else
+        {
+            return view ('productos.index',compact('productos'));  
+        }
+        
+        return $productos;
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -67,7 +82,12 @@ class productoController extends Controller
      */
     public function show($id)
     {
-        //
+        Request()->user()->authorizeRoles('admin');
+        $producto = producto::find($id);
+
+        return view ('productos.show',compact('producto'));
+
+
     }
 
     public function getByCategoria($cat)
@@ -84,6 +104,10 @@ class productoController extends Controller
     public function edit($id)
     {
         Request()->user()->authorizeRoles('admin'); 
+        $producto= producto::find($id);
+        $categoria = \App\categoria::all();
+        
+        return view('productos.edit', compact('producto','id','categoria'));
     }
 
     /**
@@ -95,7 +119,19 @@ class productoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Request()->user()->authorizeRoles('admin'); 
+       Request()->user()->authorizeRoles('admin'); 
+        $producto= producto::find($id);
+
+        $nombre=$request->name;
+        $imagenNombre='/images/'.$nombre.'.'.$request->imagen->getClientOriginalExtension();
+        $imagen= request()->file('imagen');
+        
+        $nombreImagen = $nombre.'.'.$request->imagen->getClientOriginalExtension();
+        $destinationPath = public_path('images');
+        $imagen->move($destinationPath, $nombreImagen);
+        $producto->update(['name'=>$request->name, 'descripcion' => $request->descripcion, 'categoria_id' => $request->categoria_id, 'precio'=> $request->precio,'imagen'=>$imagenNombre]);
+
+        return redirect('/');
     }
 
     /**
@@ -107,5 +143,11 @@ class productoController extends Controller
     public function destroy($id)
     {
         Request()->user()->authorizeRoles('admin'); 
+        $producto=producto::find($id);
+        $producto->delete();
+
+        // redirect
+        
+        return redirect('/');
     }
 }
