@@ -27,9 +27,10 @@ Route::patch('/productos/{id}', 'productoController@update');
 Route::get('/categorias', 'categoriaController@index');
 Route::get('/categorias/create', 'categoriaController@create');
 Route::post('/categorias', 'categoriaController@store');
-Route::get('/categorias/show', function () {
-    return view ('categorias.index');
-});
+Route::get('/categorias/show', 'categoriaController@home');
+Route::get('/categorias/{id}/edit', 'categoriaController@edit');
+Route::delete('/categorias/{id}', 'categoriaController@destroy'); 
+Route::patch('/categorias/{id}', 'categoriaController@update'); 
 
 Route::get('/categorias/{id}', 'categoriaController@show');
 Route::get('/categorias/{id}/get', 'categoriaController@get');

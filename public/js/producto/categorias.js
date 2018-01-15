@@ -13,7 +13,7 @@ $.ajax({
 
 function parsearCategorias(data){
 var columna= document.getElementById('r');
-	var name, descripcion, precio, categoria_id,producto;
+	var name, descripcion;
 	var div,h3,h4,img,center0;
 	for (i = 0; i < data.length; i++) { 
     	categoria = data[i];

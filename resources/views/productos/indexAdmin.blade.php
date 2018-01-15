@@ -18,6 +18,10 @@
         <div class="container">
           <table class="table table-bordered table-striped table-hover category-table" data-toggle="dataTable" data-form="deleteForm">
           	<tbody>
+          	@if ($productos->isEmpty())
+				<h2>No hay elementos</h2>
+				<a href="{{action('productoController@create')}}" class="btn btn-success">Agregar Producto</a>
+			@endif
 			@foreach($productos as $producto)
 			<tr>
 		      <td>    

@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\producto;
+use Illuminate\Support\Facades\Auth;
 use View;
 class productoController extends Controller
 {
     
+    
      public function __construct() {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->except('home','index');
+         
     }
     /**
      * Display a listing of the resource.
@@ -27,18 +30,17 @@ class productoController extends Controller
     }
     public function home()
     {
-        
+       
+       
         $productos = producto::all();
-        if (Request()->user()->authorizeRoles('admin'))
+
+        if (Request()->user() != null && Request()->user()->hasRole('admin'))
         {
             return view ('productos.indexAdmin',compact('productos'));
         } 
-        else
-        {
-            return view ('productos.index',compact('productos'));  
-        }
+        return view ('productos.index',compact('productos'));  
         
-        return $productos;
+        
     }
     /**
      * Show the form for creating a new resource.

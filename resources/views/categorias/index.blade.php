@@ -7,6 +7,10 @@
 @endsection
         
 @section ('contenido')     
+
+
+
+
 <div class="container">
 <center><h2>Categorias</h2></center>
 <div class="album text-muted">
