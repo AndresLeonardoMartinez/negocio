@@ -39,7 +39,7 @@ Route::get('/categorias/{id}/get', 'categoriaController@get');
 Auth::routes();
 
 Route::get('/home',function () {
-    return view ('productos.index');
+    return view ('productos.inicio');
 });
 
 
