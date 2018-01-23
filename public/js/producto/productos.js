@@ -27,7 +27,7 @@ $.ajax({
 
 function parsearProductos(data){
 	var columna= document.getElementById('r');
-	var name, descripcion, precio, categoria_id,producto, imagen;
+	var name, descripcion, precio, categoria_id,producto, imagen,stock,nuevo;
 	var div,h4,p,h6,img,divGrande;
 	for (i = 0; i < data.length; i++) { 
     	producto = data[i];

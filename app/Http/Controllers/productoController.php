@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use App\producto;
 use Illuminate\Support\Facades\Auth;
 use View;
+use Yajra\Datatables\Datatables;
 class productoController extends Controller
 {
     
     
      public function __construct() {
-        $this->middleware('auth')->except('home','index');
+        $this->middleware('auth')->except('home','index','getProductos','getByCategoria');
          
     }
     /**
@@ -38,10 +39,20 @@ class productoController extends Controller
         {
             return view ('productos.indexAdmin',compact('productos'));
         } 
-        return view ('productos.index',compact('productos'));  
+        return view ('productos.allProductos',compact('productos'));  
         
         
     }
+    public function getProductos()
+    {
+        $productos = producto::select(['categoria_id','imagen', 'name','precio','descripcion','stock']);
+        
+        return Datatables::of($productos)
+ 
+            ->make(true);
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -63,7 +74,10 @@ class productoController extends Controller
      */
     public function store(Request $request)
     {
+        
         Request()->user()->authorizeRoles('admin'); 
+        $producto = new producto;
+
         $nombre=$request->name;
         $imagenNombre='/images/'.$nombre.'.'.$request->imagen->getClientOriginalExtension();
         $imagen= request()->file('imagen');
@@ -71,7 +85,17 @@ class productoController extends Controller
         $nombreImagen = $nombre.'.'.$request->imagen->getClientOriginalExtension();
         $destinationPath = public_path('images');
         $imagen->move($destinationPath, $nombreImagen);
-        producto::create(['name'=>$request->name, 'descripcion' => $request->descripcion, 'categoria_id' => $request->categoria_id, 'precio'=> $request->precio,'imagen'=>$imagenNombre]);
+        
+        $producto->name=$request->name;
+        $producto->descripcion=$request->descripcion;
+        $producto->stock=$request->stock;
+        $producto->nuevo=true;
+        $producto->imagen=$imagenNombre;
+        $producto->categoria_id=$request->categoria_id;
+        $producto->precio=$request->precio;
+
+
+        $producto->save();
 
         return redirect('/');
     }
@@ -128,10 +152,14 @@ class productoController extends Controller
         $imagenNombre='/images/'.$nombre.'.'.$request->imagen->getClientOriginalExtension();
         $imagen= request()->file('imagen');
         
+        $nuevo=false;
+        if ($request['nuevo'] == "on") {
+           $nuevo = true;
+        }
         $nombreImagen = $nombre.'.'.$request->imagen->getClientOriginalExtension();
         $destinationPath = public_path('images');
         $imagen->move($destinationPath, $nombreImagen);
-        $producto->update(['name'=>$request->name, 'descripcion' => $request->descripcion, 'categoria_id' => $request->categoria_id, 'precio'=> $request->precio,'imagen'=>$imagenNombre]);
+        $producto->update(['name'=>$request->name, 'descripcion' => $request->descripcion, 'categoria_id' => $request->categoria_id, 'precio'=> $request->precio,'imagen'=>$imagenNombre,'stock'=> $request->stock,'nuevo'=>$nuevo]);
 
         return redirect('/');
     }

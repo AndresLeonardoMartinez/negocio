@@ -8,7 +8,7 @@ use App\categoria;
 class categoriaController extends Controller
 {
      public function __construct() {
-        $this->middleware('auth')->except('index', 'show','home');
+        $this->middleware('auth')->except('index', 'show','home','get');
     }
     
     /**

@@ -21,8 +21,14 @@
             
         @endforeach
         <br>
-      <label for="precio">Precio</label>
-      <input type="number" step=0.01 min=0 name='precio' >
+      <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="number" step=0.01 min=0 name='precio' >
+      </div>
+      <div class="form-group">
+        <label for="stock">stock</label>
+        <input type="number" step=1 min=0 name='stock' >
+      </div>
       <input type="file" class="form-control-file" id="imagen" name="imagen">
       <br>
       <button type="submit" class="btn btn-primary">Guardar</button>

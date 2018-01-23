@@ -28,15 +28,23 @@
 				{{HTML::image($producto->imagen ,$producto->name,array('class' => 'productoAdmin'))}}
 			</td>
 			<td>
-				<h4 class="card-title" >{{$producto->name}} </h4>
+				<h3 >{{$producto->name}} </h3>
 			
-				<p class="card-text"> {{$producto->descripcion}}</p>
+				<p class="text-justify"> {{$producto->descripcion}}</p>
 			
-				<h6 class="card-subtitle mb-2 text-muted">{{$producto->precio}} </h6>
+				<h4 > $ {{$producto->precio}} </h4>
 		
 				
 				<p>Categoria: <a href={{'/categorias/'.$producto->categoria_id.'/get'}}>{{$producto->categoria->name}} </a>
 				</p>
+				@if($producto->stock==0)
+					<h6 class="noDisponible"> No disponible</h6>
+				@else
+					<h6 >stock : {{$producto->stock}} </h6>
+				@endif
+				@if($producto->nuevo || $producto->esNuevo())
+					<h4 class="nuevo">Producto nuevo!</h4>
+				@endif
 				</td>
 			
 			

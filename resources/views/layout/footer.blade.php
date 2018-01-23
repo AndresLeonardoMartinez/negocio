@@ -1,9 +1,19 @@
  <footer class="text-muted">
       <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
+        <center><p class="float-right">
+          <a href="#">Ir arriba</a>
         </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+        <p> El Jardin de Hilda</p>
+            
+        <p>Bahía Blanca - Buenos Aires - Argentina </p>
+        <div class="row">
+        	<a href="https://www.facebook.com/eljardindehilda"  title="Hacete fan del Jardin de Hilda!">
+        		{{ HTML::image('images/facebook.jpg', 'facebook page',array('class'=>'redes_sociales')) }}
+        	</a>
+    		<a href="https://www.instagram.com/eljardindehilda/" title="Seguinos en Instagram">
+    			{{ HTML::image('images/instagram.png', 'instagram page',array('class'=>'redes_sociales')) }}
+    		</a>
+    	</div>
+      </center>
       </div>
 </footer>

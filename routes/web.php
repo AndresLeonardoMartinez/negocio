@@ -18,10 +18,12 @@ Route::get('/productos', 'productoController@index');
 Route::get('/productos/create', 'productoController@create');
 Route::get('/productos/{id}', 'productoController@show');
 Route::get('/productos/{id}/edit', 'productoController@edit');
-Route::get('/productos/{cat}', 'productoController@getByCategoria');
+Route::get('/productos/categoria/{cat}', 'productoController@getByCategoria');
+Route::get('/producto/all', 'productoController@getProductos')->name('datatable.productos');
 Route::post('/productos', 'productoController@store');
 Route::delete('/productos/{id}', 'productoController@destroy'); 
 Route::patch('/productos/{id}', 'productoController@update'); 
+
 
 
 Route::get('/categorias', 'categoriaController@index');

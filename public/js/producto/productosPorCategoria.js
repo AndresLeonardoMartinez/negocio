@@ -14,7 +14,7 @@ $.ajax({
         }
 });
 };
-function pedirCategorias(){
+
 $.ajax({
         
         url:   '/categorias',
@@ -25,7 +25,7 @@ $.ajax({
                 parsearCategorias(response);
         }
 });
-};
+
 
 function parsearCategorias(data){
         var cat,id;
@@ -34,20 +34,21 @@ function parsearCategorias(data){
                 id = (cat.id).toString();
                 categorias[id] = {nombre:cat.name,descripcion:cat.descripcion};
         }
-}
-
-$(function() {
-        pedirCategorias();
         n = $('#categoria_id').html();
         console.log(n);
 
-        var path = '/productos/'+n;
+        var path = '/productos/categoria/'+n;
+        
         pedirProductos(path);
-});
+}
+
+
+
 
 function parsearProductos(data){
+    
         var columna= document.getElementById('r');
-        var name, descripcion, precio, n,producto, imagen;
+        var name, descripcion, precio, producto, imagen;
         var div,h4,p,h6,img;
         for (i = 0; i < data.length; i++) { 
         producto = data[i];
@@ -65,18 +66,19 @@ function parsearProductos(data){
         h6.className += 'card-subtitle mb-2 text-muted';
             a=document.createElement("A");
             a.href='/categorias/'+n+'/get';
-            a.innerHTML = categorias [n].nombre;
+            var cc = categorias [n];
+            a.innerHTML = cc.nombre;
             pp=document.createElement("P");
             pp.innerHTML="Categoria:";
             pp.appendChild(a);
-                h4.innerHTML=name;
+            h4.innerHTML=name;
         p.innerHTML=descripcion;
         h6.innerHTML="$"+precio;
         img =document.createElement("IMG");
         //img.className+="card-img-top";
         console.log(producto.imagen);
         img.src=producto.imagen;
-        img.className+="img-thumbnail";
+        img.className+="producto";
         img.alt=producto.name;
         // img.height="200";
         // img.width="200";

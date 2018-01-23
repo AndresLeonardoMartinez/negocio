@@ -18,9 +18,14 @@ class Productos extends Migration
             $table->string('name',100);
             $table->float('precio', 6, 2)->default(0);  
             $table->text('descripcion');
+
             $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+
             $table->softDeletes();
             $table->integer('categoria_id')->unsigned()->index();
+            $table->integer('stock')->default(0);
+            $table->boolean('nuevo')->default(false);   
 
             $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->string('imagen',100)->default("");
