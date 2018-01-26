@@ -1,6 +1,6 @@
 <main>
 
-     @include ('layout.presentacion') 
+     <!-- @include ('layout.presentacion')  -->
       
      @yield ('contenido')
 </main>      

@@ -39,7 +39,7 @@ class productoController extends Controller
         {
             return view ('productos.indexAdmin',compact('productos'));
         } 
-        return view ('productos.allProductos',compact('productos'));  
+        return view ('productos.index');  
         
         
     }

@@ -3,6 +3,7 @@
 @section ('js')        
   <script
   src={{ URL::to("js/producto/productosPorCategoria.js") }}></script>
+  <script src={{ URL::to("js/producto/compartido.js") }}></script>
   
 @endsection
         
